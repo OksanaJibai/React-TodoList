@@ -1,13 +1,21 @@
-import TodoList from './components/TodoList';
+import {Route, Routes} from 'react-router-dom';
+import Home from './pages/Home';
+import TodoList from './pages/TodoList';
+import Todo from './pages/Todo';
 
 function App() {
 	return(
 		// eslint-disable-next-line react/react-in-jsx-scope
 		<>
 			{/* eslint-disable-next-line react/react-in-jsx-scope */}
-			<h1 className="text-center mt-5 mb-5">TODO LIST</h1>
-			{/* eslint-disable-next-line react/react-in-jsx-scope */}
-			<TodoList/>
+			<Routes>
+				{/* eslint-disable-next-line react/react-in-jsx-scope */}
+				<Route path="/" element={<Home />} />
+				{/* eslint-disable-next-line react/react-in-jsx-scope */}
+				<Route path="/todosList" element={<TodoList />} />
+				{/* eslint-disable-next-line react/react-in-jsx-scope */}
+				<Route path="/todoList/:id" element={<Todo />} />
+			</Routes>
 		</>
 	);
 }

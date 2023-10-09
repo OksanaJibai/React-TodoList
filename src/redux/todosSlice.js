@@ -18,11 +18,21 @@ export const todosSlice = createSlice({
 		deleteTodo : (state, action) =>{
 			return state.filter(todo => todo.id !== action.payload.id);
 		},
+		setCompleteTodo: (state, action) => {
+			const index = state.findIndex(
+				todo => todo.id === action.payload.id
+			);
+			state[index] = {
+				...state[index],
+				isCompleted: action.payload.isChecked,
+			};
+			return state;
+		},
 		deleteAll : () =>{
 			return [];
 		},
 	},
 });
 
-export const {addTodo, deleteTodo, deleteAll} = todosSlice.actions;
+export const {addTodo, deleteTodo, setCompleteTodo, deleteAll} = todosSlice.actions;
 export const todosReducer = todosSlice.reducer;
